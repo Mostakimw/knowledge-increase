@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <div>
-      <div className="navbar w-[1280px] mx-auto pt-4">
+      <div className="navbar md:w-[1280px] mx-auto pt-4">
         <div className="flex-1">
           <h1 className="text-4xl font-bold">Sohoj Sorol Knowledge</h1>
         </div>
@@ -17,7 +17,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <hr className="w-[1280px] mx-auto border color-[#111111] mt-5" />
+      <hr className="md:w-[1280px] mx-auto border color-[#111111] mt-5" />
     </div>
   );
 };
