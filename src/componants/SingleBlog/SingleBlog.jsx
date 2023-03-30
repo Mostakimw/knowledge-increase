@@ -11,7 +11,6 @@ const SingleBlog = ({ blog }) => {
     reading_time,
     hashTag,
   } = blog;
-  console.log(cover_image);
   return (
     <div>
       <div className="w-[845px]">
@@ -22,8 +21,8 @@ const SingleBlog = ({ blog }) => {
             alt="cover_image"
           />
         </div>
-        <div class="flex justify-between items-center my-8 px-2">
-          <div class="order-1 flex items-center gap-5">
+        <div className="flex justify-between items-center my-8 px-2">
+          <div className="order-1 flex items-center gap-5">
             <img
               className="w-16 rounded-[50%]"
               src={author_image}
@@ -34,8 +33,8 @@ const SingleBlog = ({ blog }) => {
               <p>12 sept 1000</p>
             </div>
           </div>
-          <div class="order-2">
-            <p class="font-[500] text-[#11111199]">
+          <div className="order-2">
+            <p className="font-[500] text-[#11111199]">
               {reading_time} minutes read
             </p>
           </div>
