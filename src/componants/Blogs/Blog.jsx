@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SingleBlog from "../SingleBlog/SingleBlog";
 
-const Blog = ({ blogs, handleBookmarkAndClick }) => {
+const Blog = ({ blogs, handleBookmarkAndClick, handlerReadTimeBtn }) => {
   return (
     <div className="col-span-8">
       {blogs.map((blog) => (
@@ -9,6 +9,7 @@ const Blog = ({ blogs, handleBookmarkAndClick }) => {
           key={blog.id}
           blog={blog}
           handleBookmarkAndClick={handleBookmarkAndClick}
+          handlerReadTimeBtn={handlerReadTimeBtn}
         ></SingleBlog>
       ))}
     </div>

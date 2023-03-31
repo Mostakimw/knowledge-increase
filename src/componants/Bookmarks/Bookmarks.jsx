@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const Bookmarks = ({ blogTitle, bookmarks }) => {
-  console.log(bookmarks);
   return (
     <div className="bg-[#1111110D] mt-5 rounded-md">
       <div className="p-4">

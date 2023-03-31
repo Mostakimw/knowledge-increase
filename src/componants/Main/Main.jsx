@@ -6,11 +6,25 @@ const Main = () => {
   const [blogs, setBlogs] = useState([]);
   const [blogTitle, setBlogTitle] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
+  const [readTime, setReadTime] = useState(0);
   useEffect(() => {
     fetch(`data.json`)
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, [blogTitle]);
+  const handlerReadTimeBtn = (readTime) => {
+    console.log("ache");
+    const previousReadTime = JSON.parse(localStorage.getItem("readTime"));
+    if (previousReadTime) {
+      const sum = previousReadTime + readTime;
+      localStorage.setItem("readTime", sum);
+      setReadTime(sum);
+      console.log("ache");
+    } else {
+      localStorage.setItem("readTime", readTime);
+      setReadTime(readTime);
+    }
+  };
 
   const handlerBookmark = (id, title) => {
     const previousBookmark = JSON.parse(localStorage.getItem("bookmark"));
@@ -24,7 +38,6 @@ const Main = () => {
       } else {
         bookmark.push(...previousBookmark, product);
         localStorage.setItem("bookmark", JSON.stringify(bookmark));
-        // console.log(bookmark);
       }
     } else {
       bookmark.push(product);
@@ -42,8 +55,6 @@ const Main = () => {
     } else {
       previousLocalStorageBookmarks = [];
     }
-    console.log(previousLocalStorageBookmarks);
-    // setBookmarks(localStorageBookmarks);
   }, []);
   const handleBookmarkClick = () => {
     let previousLocalStorageBookmarks = JSON.parse(
@@ -109,8 +120,13 @@ const Main = () => {
         <Blog
           blogs={blogs}
           handleBookmarkAndClick={handleBookmarkAndClick}
+          handlerReadTimeBtn={handlerReadTimeBtn}
         ></Blog>
-        <SideBar bookmarks={bookmarks} blogTitle={blogTitle}></SideBar>
+        <SideBar
+          bookmarks={bookmarks}
+          blogTitle={blogTitle}
+          readTime={readTime}
+        ></SideBar>
       </div>
     </>
   );
