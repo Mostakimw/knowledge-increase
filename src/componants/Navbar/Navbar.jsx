@@ -11,7 +11,7 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-16 rounded-full">
-                <img src="https://picsum.photos/200/300" />
+                <img src="https://images.pexels.com/photos/3823495/pexels-photo-3823495.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
               </div>
             </label>
           </div>
