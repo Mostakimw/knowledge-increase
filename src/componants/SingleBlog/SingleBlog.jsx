@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import React from "react";
 
-const SingleBlog = ({ blog }) => {
+const SingleBlog = ({ blog, handleBookmarkAndClick }) => {
   const {
     id,
     cover_image,
@@ -32,15 +32,19 @@ const SingleBlog = ({ blog }) => {
             />
             <div>
               <h2 className="txt-2xl font-bold">{name}</h2>
-              <p>12 sept 1000</p>
+              <p>{published}</p>
             </div>
           </div>
           <div className="order-2">
             <p className="font-[500] text-[#11111199]">
               {reading_time} minutes read{" "}
-              <a href="">
+              <button
+                onClick={() => {
+                  handleBookmarkAndClick(id, blog_title);
+                }}
+              >
                 <FontAwesomeIcon icon={faBookmark} />
-              </a>
+              </button>
             </p>
           </div>
         </div>
