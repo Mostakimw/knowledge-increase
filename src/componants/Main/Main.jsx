@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import Blog from "../Blogs/Blog";
 import SideBar from "../SideBar/SideBar";
 
 const Main = () => {
+  const MySwal = withReactContent(Swal);
   const [blogs, setBlogs] = useState([]);
   const [blogTitle, setBlogTitle] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
   const [readTime, setReadTime] = useState(0);
+  // ! fetching data
   useEffect(() => {
     fetch(`data.json`)
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, [blogTitle]);
+
+  // ! mark as read btn handler
   const handlerReadTimeBtn = (readTime) => {
     console.log("ache");
     const previousReadTime = JSON.parse(localStorage.getItem("readTime"));
@@ -26,6 +32,7 @@ const Main = () => {
     }
   };
 
+  // ! store id and title on local storage by click bookmark btn
   const handlerBookmark = (id, title) => {
     const previousBookmark = JSON.parse(localStorage.getItem("bookmark"));
     let bookmark = [];
@@ -34,7 +41,10 @@ const Main = () => {
     if (previousBookmark) {
       const isThisProductMarked = previousBookmark.find((pd) => pd.id == id);
       if (isThisProductMarked) {
-        alert("hello");
+        MySwal.fire({
+          title: <strong>Already Bookmarked</strong>,
+          icon: "success",
+        });
       } else {
         bookmark.push(...previousBookmark, product);
         localStorage.setItem("bookmark", JSON.stringify(bookmark));
@@ -46,6 +56,7 @@ const Main = () => {
     setBlogTitle(bookmark);
   };
 
+  // ! for showing title on sidebar
   useEffect(() => {
     let previousLocalStorageBookmarks = JSON.parse(
       localStorage.getItem("bookmark")
@@ -56,6 +67,7 @@ const Main = () => {
       previousLocalStorageBookmarks = [];
     }
   }, []);
+  // ! another bookmark btn handler for get title from storage and show on sidebar
   const handleBookmarkClick = () => {
     let previousLocalStorageBookmarks = JSON.parse(
       localStorage.getItem("bookmark")
@@ -67,6 +79,8 @@ const Main = () => {
     }
     setBookmarks(previousLocalStorageBookmarks);
   };
+
+  // ! bookmark btn handler
   const handleBookmarkAndClick = (id, title) => {
     handlerBookmark(id, title);
     handleBookmarkClick();
@@ -116,17 +130,21 @@ const Main = () => {
 
   return (
     <>
-      <div className="grid grid-cols-12 gap-6 mt-10 md:w-[1280px] mx-auto relative">
-        <Blog
-          blogs={blogs}
-          handleBookmarkAndClick={handleBookmarkAndClick}
-          handlerReadTimeBtn={handlerReadTimeBtn}
-        ></Blog>
-        <SideBar
-          bookmarks={bookmarks}
-          blogTitle={blogTitle}
-          readTime={readTime}
-        ></SideBar>
+      <div className="grid grid-cols-12 gap-6 mt-10 md:w-[1280px] mx-auto ">
+        <div className="col-span-8 relative">
+          <Blog
+            blogs={blogs}
+            handleBookmarkAndClick={handleBookmarkAndClick}
+            handlerReadTimeBtn={handlerReadTimeBtn}
+          ></Blog>
+        </div>
+        <div className="col-span-4 sticky top-0">
+          <SideBar
+            bookmarks={bookmarks}
+            blogTitle={blogTitle}
+            readTime={readTime}
+          ></SideBar>
+        </div>
       </div>
     </>
   );

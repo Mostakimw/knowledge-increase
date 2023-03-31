@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-const Bookmarks = ({ blogTitle, bookmarks }) => {
+const Bookmarks = ({ bookmarks }) => {
   return (
     <div className="bg-[#1111110D] mt-5 rounded-md">
       <div className="p-4">

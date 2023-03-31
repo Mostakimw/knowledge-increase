@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SingleBlog from "../SingleBlog/SingleBlog";
 
 const Blog = ({ blogs, handleBookmarkAndClick, handlerReadTimeBtn }) => {
   return (
-    <div className="col-span-8">
+    <div>
       {blogs.map((blog) => (
         <SingleBlog
           key={blog.id}
