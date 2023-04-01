@@ -3,7 +3,7 @@ import SingleBlog from "../SingleBlog/SingleBlog";
 
 const Blog = ({ blogs, handleBookmarkAndClick, handlerReadTimeBtn }) => {
   return (
-    <div>
+    <div className="max-sm:px-5">
       {blogs.map((blog) => (
         <SingleBlog
           key={blog.id}

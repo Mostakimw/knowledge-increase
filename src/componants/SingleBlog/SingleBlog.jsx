@@ -49,7 +49,7 @@ const SingleBlog = ({ blog, handleBookmarkAndClick, handlerReadTimeBtn }) => {
           </div>
         </div>
       </div>
-      <h1 className="text-3xl font-bold w-8/12 mb-3">{blog_title}</h1>
+      <h1 className="text-3xl font-bold md:w-8/12 mb-3">{blog_title}</h1>
       <p className="mb-3">{hashTag}</p>
       <a
         onClick={() => handlerReadTimeBtn(reading_time)}
