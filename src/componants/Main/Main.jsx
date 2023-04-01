@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Blog from "../Blogs/Blog";
@@ -8,7 +9,6 @@ import SideBar from "../SideBar/SideBar";
 const Main = () => {
   const MySwal = withReactContent(Swal);
   const [blogs, setBlogs] = useState([]);
-  const [blogTitle, setBlogTitle] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
   const [readTime, setReadTime] = useState(0);
   // ! fetching data
@@ -16,7 +16,7 @@ const Main = () => {
     fetch(`data.json`)
       .then((res) => res.json())
       .then((data) => setBlogs(data));
-  }, [blogTitle]);
+  }, []);
 
   // ! mark as read btn handler
   const handlerReadTimeBtn = (readTime) => {
@@ -36,25 +36,25 @@ const Main = () => {
   // ! store id and title on local storage by click bookmark btn
   const handlerBookmark = (id, title) => {
     const previousBookmark = JSON.parse(localStorage.getItem("bookmark"));
-    let bookmark = [];
-    const product = { id, title, bookmark: true };
+    let storeData = [];
+    const bookmark = { id, title };
 
     if (previousBookmark) {
-      const isThisProductMarked = previousBookmark.find((pd) => pd.id == id);
-      if (isThisProductMarked) {
+      const isThisbookmarked = previousBookmark.find((item) => item.id == id);
+      if (isThisbookmarked) {
         MySwal.fire({
           title: <strong>Already Bookmarked</strong>,
           icon: "success",
         });
       } else {
-        bookmark.push(...previousBookmark, product);
-        localStorage.setItem("bookmark", JSON.stringify(bookmark));
+        storeData.push(...previousBookmark, bookmark);
+        localStorage.setItem("bookmark", JSON.stringify(storeData));
       }
     } else {
-      bookmark.push(product);
-      localStorage.setItem("bookmark", JSON.stringify(bookmark));
+      storeData.push(bookmark);
+      localStorage.setItem("bookmark", JSON.stringify(storeData));
     }
-    setBookmarks(bookmark);
+    setBookmarks(storeData);
   };
 
   // ! for showing title on sidebar
@@ -89,11 +89,7 @@ const Main = () => {
           ></Blog>
         </div>
         <div className="col-span-4 sticky top-0">
-          <SideBar
-            bookmarks={bookmarks}
-            blogTitle={blogTitle}
-            readTime={readTime}
-          ></SideBar>
+          <SideBar bookmarks={bookmarks} readTime={readTime}></SideBar>
         </div>
       </div>
       <Qna></Qna>
