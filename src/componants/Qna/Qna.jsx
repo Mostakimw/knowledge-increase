@@ -2,9 +2,12 @@ import React from "react";
 
 const Qna = () => {
   return (
-    <div>
-      <div className="bg-[#1111110D] mt-5 rounded-md mb-8 grid grid-cols-12 gap-6 md:w-[1280px] mx-auto">
-        <div className="col-span-6 bg-red-200 p-5 rounded-sm">
+    <div className="mt-12">
+      <h1 className="text-center font-bold text-3xl underline">
+        You Should Know About Them
+      </h1>
+      <div className="bg-[#1111110D] mt-12 rounded-md mb-8 md:grid grid-cols-12 gap-6 md:w-[1280px] mx-auto">
+        <div className="col-span-6 bg-red-200 p-5 rounded-sm max-sm:border-b border-black ">
           <h1 className="font-bold text-3xl mb-5">
             Difference between props and state.
           </h1>
@@ -32,7 +35,7 @@ const Qna = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-6 bg-red-200 p-5 rounded-sm">
+        <div className="col-span-6 bg-red-200 p-5 rounded-sm max-sm:border-b border-black">
           <h1 className="font-bold text-3xl mb-5">How useState work</h1>
           <p>
             useState is a react hook that allows to add, create and updtae a
@@ -46,7 +49,7 @@ const Qna = () => {
             another is the update function.
           </p>
         </div>
-        <div className="col-span-6 bg-red-200 p-5 rounded-sm">
+        <div className="col-span-6 bg-red-200 p-5 rounded-sm max-sm:border-b border-black">
           <h1 className="font-bold text-3xl mb-5">How does React works</h1>
           <p>
             React is a Javascript library that builds UI. It allows to create

@@ -14,11 +14,11 @@ const SingleBlog = ({ blog, handleBookmarkAndClick, handlerReadTimeBtn }) => {
     hashTag,
   } = blog;
   return (
-    <div>
-      <div className="w-[845px]">
+    <>
+      <div>
         <div>
           <img
-            className="w-[845px] h-[450px] rounded-md"
+            className="md:w-[845px] md:h-[450px] max-sm:w-full rounded-md"
             src={cover_image}
             alt="cover_image"
           />
@@ -59,7 +59,7 @@ const SingleBlog = ({ blog, handleBookmarkAndClick, handlerReadTimeBtn }) => {
         Mark as read
       </a>
       <hr className="w-full color-[#111111] my-5" />
-    </div>
+    </>
   );
 };
 

@@ -3,7 +3,7 @@ import React from "react";
 const Bookmarks = ({ bookmarks }) => {
   return (
     <div className="bg-[#1111110D] mt-5 rounded-md">
-      <div className="p-4">
+      <div className="p-5">
         <h3 className="text-xl font-bold pb-4">
           Bookmarked Blogs : {bookmarks ? bookmarks.length : 0}
         </h3>

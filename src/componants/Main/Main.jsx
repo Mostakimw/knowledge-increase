@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Blog from "../Blogs/Blog";
-import Footer from "../Footer/Footer";
 import Qna from "../Qna/Qna";
 import SideBar from "../SideBar/SideBar";
 
@@ -81,7 +80,7 @@ const Main = () => {
 
   return (
     <>
-      <div className="grid grid-cols-12 gap-6 mt-10 md:w-[1280px] mx-auto relative">
+      <div className="md:grid grid-cols-12 gap-6 mt-10 md:w-[1280px] mx-auto">
         <div className="col-span-8 ">
           <Blog
             blogs={blogs}
@@ -98,7 +97,6 @@ const Main = () => {
         </div>
       </div>
       <Qna></Qna>
-      <Footer></Footer>
     </>
   );
 };

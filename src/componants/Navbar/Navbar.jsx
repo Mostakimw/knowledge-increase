@@ -5,7 +5,7 @@ const Navbar = () => {
     <div>
       <div className="navbar md:w-[1280px] mx-auto pt-4">
         <div className="flex-1">
-          <h1 className="text-4xl font-bold">Sohoj Sorol Knowledge</h1>
+          <h1 className="text-4xl font-bold">Code Cafe</h1>
         </div>
         <div className="flex-none gap-2">
           <div className="dropdown dropdown-end">
