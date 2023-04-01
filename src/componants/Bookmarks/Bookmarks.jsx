@@ -8,7 +8,10 @@ const Bookmarks = ({ bookmarks }) => {
           Bookmarked Blogs : {bookmarks ? bookmarks.length : 0}
         </h3>
         {bookmarks.map((bookmark) => (
-          <p key={bookmark.id} className="bg-base-100 rounded-md p-3 mb-4">
+          <p
+            key={bookmark.id}
+            className="text-xl font-semibold bg-base-100 rounded-md p-3 mb-4"
+          >
             {bookmark.title}
           </p>
         ))}
